@@ -124,28 +124,44 @@
 			nextPage();    
 			return null;
 		} else if (e.which ==37) { //left
-			nextPage();	
+			backPage();	
 			return null;  
 		}
 	}
 </script>
 <script>
 	var pg = 1;
-	var ch = 0;
-
-	function nextPage() {
-		var source = document.getElementById('comix').src
-		try {
-			pg++;
-			console.log(ch.toString()+'/0'+pg.toString()+'.png');
-			document.getElementById('comix').src = ch.toString()+'/0'+pg.toString()+'.png';
+	var ch = 0;	
+	var maxCh=1;
+	var maxPg = 4;
+	function backPage() {
+		if (ch == 0 && pg ==01) { 
+			return null;
 		}
-		catch(err) {
-			ch++;
-			console.log( ch.toString()+'/0'+pg.toString()+'.png');
+		pg--;
+		document.getElementById('comix').src = ch.toString()+'/0'+pg.toString()+'.png';
+
+		document.getElementById('comix').onerror = function() {
+			ch--;
 			pg=1;
 			document.getElementById('comix').src= ch.toString()+'/0'+pg.toString()+'.png';
 		}
+		console.log(ch.toString()+'/0'+pg.toString()+'.png');
+
+	}
+	function nextPage() {
+		if (ch == maxCh && pg ==maxPg) { 
+			return null;
+		}
+		pg++;
+		document.getElementById('comix').src = ch.toString()+'/0'+pg.toString()+'.png';
+		
+		document.getElementById('comix').onerror = function() {
+			ch++;
+			pg=1;
+			document.getElementById('comix').src= ch.toString()+'/0'+pg.toString()+'.png';
+		}
+		console.log(ch.toString()+'/0'+pg.toString()+'.png');
 
 	}
 
@@ -166,10 +182,12 @@
 
 		<div id="main">
 			<img id="comix"src="0/01.png"/>
-			<div class="arrows"><p onclick="document.getElementById('comix').img.src=0/01">first</p>||
-				<button onclick="nextPage()">back</button> || 
-				<p onclick="document.getElementById('comix').img.src=0/03">next </p>|| 
-				<p onclick="document.getElementById('comix').img.src=0/04">last</p></div>
+			<div class="arrows"><p>
+			<b onclick="document.getElementById('comix').src='0/01.png'">first</b> || 
+			<b onclick="backPage()">back</b> ||  
+			<b onclick="nextPage()">next</b> || 
+			<b onclick="document.getElementById('comix').src= maxCh.toString()+'/0'+maxPg.toString()+'.png'">last</b>
+			</p></div>
 			</div>
 
 
