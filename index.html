@@ -90,6 +90,10 @@
 		padding:10px;
 	}
 
+	#comix img {
+		border-radius:10px;
+	}
+
 	#arrows p{
 		text-align:center;
 	}
@@ -183,10 +187,10 @@
 		<div id="main">
 			<img id="comix"src="0/01.png"/>
 			<div class="arrows"><p>
-			<b onclick="document.getElementById('comix').src='0/01.png'">first</b> || 
-			<b onclick="backPage()">back</b> ||  
-			<b onclick="nextPage()">next</b> || 
-			<b onclick="document.getElementById('comix').src= maxCh.toString()+'/0'+maxPg.toString()+'.png'">last</b>
+			<a onclick="document.getElementById('comix').src='0/01.png'">first</a> || 
+			<a onclick="backPage()">back</a> ||  
+			<a onclick="nextPage()">next</a> || 
+			<a onclick="document.getElementById('comix').src= maxCh.toString()+'/0'+maxPg.toString()+'.png'">last</a>
 			</p></div>
 			</div>
 
@@ -199,12 +203,12 @@
 						/**
 						*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
 						*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
-						/*
+						
 						var disqus_config = function () {
 						this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
 						this.page.identifier = launch; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
 						};
-						*/
+						
 						(function() { // DON'T EDIT BELOW THIS LINE
 							var d = document, s = d.createElement('script');
 							s.src = 'https://snerkflerks.disqus.com/embed.js';
